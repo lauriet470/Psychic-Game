@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Psychic</title>
+
+
+
+    <!--end JSPrintManager scripts-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="https://meyerweb.com/eric/tools/css/reset/reset.css">
+
+</head>
+
+<body>
+    <div id=container>
+        <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRTVel2K5hdneyJlvFZxuAnLw8ym7dkzZZoQBLYMje7HJAxDfI1&usqp=CAU">
+        <p id="directions-text">Choose a letter to begin playing</p>
+        <p id="userchoice-text"></p>
+        <p id="computerchoice-text"></p>
+        <p id="wins-text"></p>
+        <p id="losses-text"></p>
+        <p id="ties-text"></p>
+
+        <script>
+
+            function getRandomInt(max) {
+                return Math.floor(Math.random() * Math.floor(max));
+            }
+
+
+            var wins = 0;
+            var losses = 0;
+            var letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "J", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "x", "y", "z"];
+            var directionsText = document.getElementById("directions-text");
+            var userChoiceText = document.getElementById("userchoice-text");
+            var computerChoiceText = document.getElementById("computerchoice-text");
+            var winsText = document.getElementById("wins-text");
+            var lossesText = document.getElementById("losses-text");
+            var computerGuess;
+            var userGuess;
+            document.onkeyup = function (event) {
+                computerGuess = getRandomInt(letters.length);
+                userGuess = event.key;
+                alert("computerguess:" +letters[computerGuess]);
+
+
+                alert("userguess:" + userGuess);
+                if (userGuess === +letters[computerGuess]) {
+                    wins++
+                } else {
+                    losses++;
+                }
+                directionsText.textContent = "Choose a letter to begin playing";
+                userChoiceText.textContent = "You chose" + userGuess;
+                computerChoiceText.textcontent = "The computer chose;" +letters[computerGuess]; 
+                winsText.textContent = "wins" + wins;
+                lossesText.textContent = "losses" + losses;
+
+
+            };
+
+        </script>
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+</body>
+
+</html>
